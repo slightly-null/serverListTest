@@ -10,6 +10,8 @@ const mysql = require('serverless-mysql')({
 })
 
 module.exports = async (req, res) => {
+    console.log('req')
+    console.log('res')
     // Run your query
     let results = await mysql.query('select * from config')
     res.status(200).json(results);
