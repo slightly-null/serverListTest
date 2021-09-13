@@ -1,10 +1,13 @@
 const mysql = require('../config/mysql')
 
-module.exports = async (req, res) => {
-    const result = await mysql.query('select * from config')
-    res.json({
-        body: result,
-        query: req.query,
-        cookies: req.cookies,
-    });
-};
+// Main handler function
+exports.handler = async (req, res) => {
+    // Run your query
+    let results = await mysql.query('select * from config')
+
+    // Run clean up function
+    await mysql.end()
+
+    // Return the results
+    return results
+}
