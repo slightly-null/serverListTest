@@ -15,14 +15,15 @@ module.exports = async (req, res) => {
     const result = await mysql.query(sql, [limit, (page - 1) * limit]);
     const total = await mysql.query(querySql);
     const totalNumber = total[0].count;
+    const body = {
+        code: 200,
+        nowPage: page,
+        totalPage: Math.ceil(totalNumber / limit),
+        totalNumber,
+        result,
+    };
     res.json({
-        body: {
-            code: 200,
-            nowPage: page,
-            totalPage: Math.ceil(totalNumber / limit),
-            totalNumber,
-            result,
-        },
+        body: body,
         query: req.query,
         cookies: req.cookies,
     });
