@@ -7,5 +7,5 @@ module.exports = async (req, res) => {
     // Because it is a promise, it will only resolve once.
     const client = await clientPromise;
     // Use the client to return the name of the connected database.
-    res.status(200).json({ dbName: client.db().databaseName });
+    res.status(200).json({dbName: client.db().databaseName});
 }
