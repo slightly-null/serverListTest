@@ -2,33 +2,10 @@ const mysql = require('../config/mysql')
 const Result = require('../constants/result')
 
 module.exports = async (req, res) => {
-    const sql = '\n' +
-        'SELECT\n' +
-        '\tIFNULL( temp.count, 0 ) AS count \n' +
-        'FROM\n' +
-        '\t(\n' +
-        '\tSELECT\n' +
-        '\t\t@s := @s + 1 AS indexs,\n' +
-        '\t\tDATE_FORMAT( DATE( DATE_SUB( CURRENT_DATE, INTERVAL @s DAY ) ), \'%Y-%m-%d\' ) AS dates \n' +
-        '\tFROM\n' +
-        '\t\tmysql.help_topic,\n' +
-        '\t\t( SELECT @s := -1 ) temp \n' +
-        '\tWHERE\n' +
-        '\t\t@s < 29 \n' +
-        '\tORDER BY\n' +
-        '\t\tdates \n' +
-        '\t) date_table\n' +
-        '\tLEFT JOIN (\n' +
-        '\tSELECT LEFT\n' +
-        '\t\t( createTime, 10 ) AS dateValue,\n' +
-        '\t\tcount( * ) AS count \n' +
-        '\tFROM\n' +
-        '\t\tGameWrite\n' +
-        '\tGROUP BY\n' +
-        '\t\tLEFT ( createTime, 10 ) \n' +
-        '\t) temp ON date_table.dates = temp.dateValue \n' +
-        'ORDER BY\n' +
-        '\tdate_table.dates\n';
+    const sql = 'SELECT IFNULL(temp.count,0) AS count FROM (\n' +
+        'SELECT @s :=@s+1 AS indexs,DATE_FORMAT(DATE(DATE_SUB(CURRENT_DATE,INTERVAL @s DAY)),\'%Y-%m-%d\') AS dates FROM mysql.help_topic,(\n' +
+        'SELECT @s :=-1) temp WHERE @s< 29 ORDER BY dates) date_table LEFT JOIN (\n' +
+        'SELECT LEFT (createTime,10) AS dateValue,count(*) AS count FROM GameWrite GROUP BY LEFT (createTime,10)) temp ON date_table.dates=temp.dateValue ORDER BY date_table.dates;\n';
     const body = await mysql.query(sql);
     const result = [];
     for (let index = 0; index < 30; index++) {
