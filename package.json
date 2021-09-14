@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@vercel/node": "^1.12.1",
+    "redis": "^3.1.2",
     "serverless-mysql": "^1.5.4"
   }
 }
