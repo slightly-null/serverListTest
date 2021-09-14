@@ -1,6 +1,6 @@
 "use strict";
 // Import the dependency.
-const clientPromise = require('./mongodb-client');
+const clientPromise = require('../config/mongodb');
 // Handler
 module.exports = async (req, res) => {
     const client = await clientPromise;
