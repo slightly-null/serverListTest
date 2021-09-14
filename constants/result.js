@@ -1,10 +1,18 @@
 const codeNumber = require('./code')
 const Result = {}
 
-Result.commonResult = function (...result) {
+Result.commonResult = function (result) {
     return {
         code: codeNumber.success,
         result
+    }
+}
+
+Result.privateKeyResult = function (result, privateKey) {
+    return {
+        code: codeNumber.success,
+        result,
+        privateKey
     }
 }
 
