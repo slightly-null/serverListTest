@@ -7,9 +7,10 @@ module.exports = async(req, res) => {
     });
 
     await client.set('foo', 'bar');
-    const data = await client.get("foo");
-
+    await client.set('22', 1);
+    const data = await client.get('foo');
+    const data1 = await client.get('22');
     res.json({
-        body: data
+        body: [data,data1]
     })
 }
