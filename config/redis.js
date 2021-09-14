@@ -1,6 +1,4 @@
-const Redis = require("redis");
-
-const redis = Redis.createClient({
+const redis = require("redis").createClient({
     url: process.env.REDIS_URL
 });
 

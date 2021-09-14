@@ -1,16 +1,9 @@
+const redis = require('../config/redis')
 
-const redis = require("redis");
-
-module.exports = async(req, res) => {
-    const client = redis.createClient ({
-        url : process.env.REDIS_URL
-    });
-
-    await client.set('foo', 'bar');
-    await client.set('22', 1);
-    const data = await client.get('foo');
-    const data1 = await client.get('22');
+module.exports = async (req, res) => {
+    await redis.set('test', '111');
+    const data = await redis.get('test');
     res.json({
-        body: [data,data1]
+        body: data
     })
 }
