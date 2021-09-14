@@ -2,6 +2,7 @@ const mysql = require('../config/mysql')
 const Result = require('../constants/result')
 
 module.exports = async (req, res) => {
+
     const limit = parseInt(req.query.limit) || 10;
     const page = parseInt(req.query.page) || 1;
     const gameAddress = req.query.gameAddress;
@@ -18,5 +19,6 @@ module.exports = async (req, res) => {
     const total = await mysql.query(querySql);
     const totalNumber = total[0].count;
     const data = Result.pageResult(0, page, limit, totalNumber, result);
+
     res.status(200).json(data);
 }

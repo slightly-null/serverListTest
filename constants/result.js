@@ -1,6 +1,6 @@
 const Result = {}
 
-Result.commonResult = function (code, result) {
+Result.commonResult = function (code, ...result) {
     return {
         code,
         result
