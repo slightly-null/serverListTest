@@ -5,5 +5,8 @@
     "@vercel/node": "^1.12.1",
     "redis": "^3.1.2",
     "serverless-mysql": "^1.5.4"
+  },
+  "devDependencies": {
+    "ioredis": "^4.27.9"
   }
 }
