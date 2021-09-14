@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     const sql = 'select gameId,gameName from NewGame';
 
     const result = await mysql.query(sql);
-    const data = Result.commonResult(0, result);
+    const data = Result.commonResult(result);
 
     res.status(200).json(data);
 }

@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
     const result = await mysql.query(sql, [itemId]);
     const privateKey = await mysql.query(querySql, [itemId]);
 
-    const data = Result.commonResult(0, result, privateKey);
+    const data = Result.commonResult(result, privateKey);
 
     res.status(200).json(data);
 }

@@ -1,15 +1,16 @@
+const codeNumber = require('./code')
 const Result = {}
 
-Result.commonResult = function (code, ...result) {
+Result.commonResult = function (...result) {
     return {
-        code,
+        code: codeNumber.success,
         result
     }
 }
 
-Result.pageResult = function (code, nowPage, limit, totalNumber, result) {
+Result.pageResult = function (nowPage, limit, totalNumber, result) {
     return {
-        code,
+        code: codeNumber.success,
         nowPage,
         totalPage: Math.ceil(totalNumber / limit),
         totalNumber,

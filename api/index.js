@@ -6,6 +6,6 @@ module.exports = async (req, res) => {
     res.status(200).json(data);
 }
 
-function test(number){
-    return number+1;
+function test(number) {
+    return number + 1;
 }

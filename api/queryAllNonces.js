@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
     const result = await mysql.query(sql, [limit, (page - 1) * limit]);
     const total = await mysql.query(querySql);
     const totalNumber = total[0].count;
-    const data = Result.pageResult(0, page, limit, totalNumber, result);
+    const data = Result.pageResult(page, limit, totalNumber, result);
 
     res.status(200).json(data);
 }

@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
         'SELECT count(DISTINCT NewNonce.player) AS PlayAddresses FROM NewNonce) AS T1 GROUP BY T1.Playaddresses';
 
     const result = await mysql.query(sql);
-    const data = Result.commonResult(0, result);
+    const data = Result.commonResult(result);
 
     res.status(200).json(data);
 }

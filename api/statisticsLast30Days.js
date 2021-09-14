@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
     for (let index = 0; index < 30; index++) {
         result.push(body[index].count);
     }
-    const data = Result.commonResult(0, result);
+    const data = Result.commonResult(result);
 
     res.status(200).json(data);
 }
