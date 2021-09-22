@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 
 
-const sequelize = new Sequelize('test1_nulls_world', 'nullsw', 'ChXWZmmccsdhiStSI4', {
-    host: 'rm-3nsbo8xy0h258g04yjo.mysql.rds.aliyuncs.com',
+const sequelize = new Sequelize('router_events', 'vercel', 'vercel123', {
+    host: 'db4free.net',
     port:3306,
     dialect: 'mysql',
     dialectModule: require('mysql2'),
