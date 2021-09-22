@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "dependencies": {
     "@vercel/node": "^1.12.1",
+    "mongodb": "^4.1.1",
+    "mysql2": "^2.3.0",
     "redis": "^3.1.2",
-    "serverless-mysql": "^1.5.4",
-    "mongodb": "^4.1.1"
+    "sequelize": "^6.6.5",
+    "serverless-mysql": "^1.5.4"
   },
   "devDependencies": {
     "ioredis": "^4.27.9"
